@@ -12,22 +12,22 @@ function TestArea(){
                 "clientY:", event.clientY)
         }
         window.addEventListener('mousemove', mousemove);
-    },[])
+    },[''])
     function change() {
         if (document.getElementById("p1").style.display != "none") {
             document.getElementById("p1").style.display = "none"
             document.getElementById("p2").style.display = "block"
         }
-        else{
-            function mousemove(event) {
-                console.log("pageX: ", event.pageX,
-                    "pageY: ", event.pageY,
-                    "clientX: ", event.clientX,
-                    "clientY:", event.clientY)
-            }
+        // else{
+        //     function mousemove(event) {
+        //         console.log("pageX: ", event.pageX,
+        //             "pageY: ", event.pageY,
+        //             "clientX: ", event.clientX,
+        //             "clientY:", event.clientY)
+        //     }
             
-            window.addEventListener('mousemove', mousemove);
-        }
+        //     window.addEventListener('mousemove', mousemove);
+        // }
         
     }
 
@@ -38,7 +38,7 @@ function TestArea(){
 return (
     <div>
         <Image id="p1" src={p1} alt="p1" onClick={change}></Image>
-        {}
+        
         <Image id="p2" src={p2} ale="p2" style={{ display: 'none' }}></Image>
     </div>
 )
