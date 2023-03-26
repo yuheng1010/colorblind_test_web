@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-function TestArea(){
+function insertData(){
     const [img, setImg] = useState([])
+    const [x, setX] = useState('')
+    const [y, setY] = useState('')
     useEffect(() => {
         fetch("http://localhost:7000/api/v1/getImg")
             .then(res => res.json())
@@ -12,20 +14,29 @@ function TestArea(){
     }, [])
     useEffect (()=>{
             function mousedown(event) {
-            console.log("pageX: ", event.pageX,
-                "pageY: ", event.pageY,
-                "offsetX: ", event.offsetX,
-                "offsetY:", event.offsetY,
-                )
+                setX(event.offsetX)
+                setY(event.offsetY)
         }
         window.addEventListener('mousedown', mousedown);
     },[])
     function change(id) {
-        // if (document.getElementById("p1").style.display != "none") {
-        //     document.getElementById("p1").style.display = "none"
-        //     document.getElementById("p2").style.display = "block"
-        // }
+        // console.log(id)
+        // console.log(x)
+        // console.log(y)
+        fetch('http://localhost:7000/api/v1/insertData', {
+        body: JSON.stringify({ 
+            id: id ,
+            x: x,
+            y: y
+        }),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+        method: 'POST',
+      })
+
     }
+  
 return (
     <div>
         {img.map((inner,index)=>
@@ -35,4 +46,4 @@ return (
 )
 
 }
-export default TestArea
+export default insertData
