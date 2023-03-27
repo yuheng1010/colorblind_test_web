@@ -5,6 +5,8 @@ const {pool} = require('../../util/db.js');
 const salt = parseInt(process.env.BCRYPT_SALT);
 const {TOKEN_EXPIRE, TOKEN_SECRET} = process.env;
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const testFolder = './public/';
 
 const checkAns = async (pointX , pointY) => {
     
@@ -30,14 +32,7 @@ const checkAns = async (pointX , pointY) => {
 
 };
 
-module.exports = {
-    checkAns
-};
-=======
-const pool = require('../../db');
-require('dotenv').config();
-const fs = require('fs');
-const testFolder = './public/';
+
 
 const getImg = async () => {
     const [result] = await pool.query('SELECT * FROM testImg');
@@ -64,6 +59,7 @@ const insertData = async(id,x,y) => {
 module.exports = {
     insertData,
     insertImgUrl,
-    getImg
+    getImg,
+    checkAns
 }
 >>>>>>> heng
