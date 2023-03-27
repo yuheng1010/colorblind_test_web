@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const {pool} = require('../../util/db.js');
@@ -62,4 +61,4 @@ module.exports = {
     getImg,
     checkAns
 }
->>>>>>> heng
+
