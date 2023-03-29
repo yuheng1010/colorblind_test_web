@@ -5,7 +5,7 @@ function insertData(){
     const [x, setX] = useState('')
     const [y, setY] = useState('')
     useEffect(() => {
-        fetch("http://localhost:7000/api/v1/getImg")
+        fetch("http://localhost:7000/api/v1/getAllImg")
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -20,9 +20,9 @@ function insertData(){
         window.addEventListener('mousedown', mousedown);
     },[])
     function change(id) {
-        // console.log(id)
-        // console.log(x)
-        // console.log(y)
+        console.log(id)
+        console.log(x)
+        console.log(y)
         fetch('http://localhost:7000/api/v1/insertData', {
         body: JSON.stringify({ 
             id: id ,
@@ -34,6 +34,7 @@ function insertData(){
         }),
         method: 'POST',
       })
+     
 
     }
   
