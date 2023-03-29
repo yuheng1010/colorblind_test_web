@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import TestArea from './components/testArea'
+import InsertData from './components/insertData';
 // import Button from 'next/Button'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,27 +17,28 @@ export default function Home() {
   const [tru, setTru] = React.useState(true);
 
   const pos = async () => {
-    const data = {
-      pointX: 1,
-      pointY: 2
-    }
-    await fetch(`${hostname}/ans/checkup`, {
-      body: JSON.stringify(data),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      method: 'POST'
-    })
-      .then((json) => json.json())
-      .then((result) => {
-        console.log(result[0])
-      })
-      .catch(error => window.alert(error))
+  //   const data = {
+  //     pointX: 1,
+  //     pointY: 2
+  //   }
+  //   await fetch(`${hostname}/ans/checkup`, {
+  //     body: JSON.stringify(data),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json',
+  //     }),
+  //     method: 'POST'
+  //   })
+  //     .then((json) => json.json())
+  //     .then((result) => {
+  //       console.log(result[0])
+  //     })
+  //     .catch(error => window.alert(error))
   }
 
   return (
     <>
-      <button className="test" onClick={pos} >hiiiii</button>
+      {/* <button className="test" onClick={pos} >hiiiii</button> */}
+      {/* <InsertData/> */}
       <TestArea />
     </>
     /* <Head>

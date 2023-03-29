@@ -1,21 +1,26 @@
 const Ans = require('../models/ans_model');
-const pool = require('../../db');
 require('dotenv').config();
 const { TOKEN_SECRET, CLIENT_URL } = process.env;
 
 const checkUp = async(req,res) => {
     const data = req.body;
-    console.log(data)
+    // console.log(data)
     try {
-        var checkUpResult = await Ans.checkAns(data.pointX , data.pointY);
-        return res.send(checkUpResult);
+        var [checkUpResult] = await Ans.checkAns(data.id);
+        // console.log("thisis checkoutRes")
+        console.log(checkUpResult[0])
+        // console.log(checkUpResult[0].correct_pointX)
+        if(checkUpResult[0].correct_pointX-20 <= data.xPos && data.xPos<= checkUpResult[0].correct_pointX+20 
+            && checkUpResult[0].correct_pointY-20 <= data.yPos && data.yPos <= checkUpResult[0].correct_pointY+20){
+            return res.send({result:"correct"})
+        }
+        return res.send({result:"wrong"});
     } catch (error) {
         res.status(400).send({ error });
         return;
     }
 
 }
-
 
 const insertData = async (req, res) => {
     const id = req.body.id
@@ -27,8 +32,8 @@ const insertImgUrl = async (req, res) => {
     Ans.insertImgUrl()
     res.status(200).json({})
 }
-const getImg = async (req, res) => {
-    const results = await Ans.getImg();
+const getAllImg = async (req, res) => {
+    const results = await Ans.getAllImg();
     if (!results) {
         res.status(400).send({ error: 'Wrong' });
         return;
@@ -36,8 +41,8 @@ const getImg = async (req, res) => {
     res.status(200).json(results);
 }
 module.exports = {
+    checkUp,
     insertData,
     insertImgUrl,
-    getImg,
-    checkUp
+    getAllImg,
 };
