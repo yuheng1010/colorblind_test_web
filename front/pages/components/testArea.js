@@ -28,6 +28,7 @@ function TestArea() {
         window.addEventListener('mousedown', mousedown);
     }, [])
     function change(id) {
+        
         if (id <= 37 && id > 20) { setLevel('P') }
         if (id <= 19 && id > 2) { setLevel('D') }
         fetch("http://localhost:7000/api/v1/ans/checkup", {
@@ -43,46 +44,57 @@ function TestArea() {
         })
             .then((json) => json.json())
             .then((result) => {
+                document.getElementById(id).style.display = "none"
                 console.log(result.result)
                 if (result.result == "correct") {
-                    document.getElementById(id).style.display = "none"
-                    document.getElementById(id - 2 - 2).style.display = "block"
+                    document.getElementById(id - 2).style.display = "block" //同樣等級的圖會連兩張，所以要減二才會到下個等級
                     setTorF('T')
+                    if(id==38 || id==39){
+                        localStorage.setItem('RGresult',img[id-2]["level_name"]) //id-2是它的位置
+                    }else if(id==20 || id==21){
+                        localStorage.setItem('Presult',img[id-2]["level_name"])  
+                    }else if(id==2 || id==3){
+                        localStorage.setItem('Dresult',img[id-2]["level_name"]) 
+                        alert("The colorblind test is finished ! Thank you !")
+                    }
                 } else {
-                    if (TorF == "F") {
+                    if (TorF == "F") { //這個等級已經錯過一次，現在再錯一次。所以這個level gameover了，跳下個level
+                        
                         if (level == 'RG') {
-                            document.getElementById(id).style.display = "none"
                             document.getElementById(37).style.display = "block"
+                            setTorF('T')
+                            localStorage.setItem('RGresult',img[id-2]["level_name"]) 
                         }
                         if (level == "P") {
-                            document.getElementById(id).style.display = "none"
                             document.getElementById(19).style.display = "block"
+                            setTorF('T')
+                            localStorage.setItem('Presult',img[id-2]["level_name"]) 
+                        }
+                        if(level == "D"){
+                            alert("The colorblind test is finished ! Thank you !")
+                            localStorage.setItem('Dresult',img[id-2]["level_name"]) 
                         }
 
                     } else {
                         document.getElementById(id).style.display = "none"
-                        document.getElementById(id - 2 - 1).style.display = "block"
+                            if(id%2==0){ 
+                                document.getElementById(id + 1).style.display = "block" //如果id是偶數那都是一類的圖，所以要加一變成二類的圖(一二類圖都一樣只是缺口不一樣)
+                            }else{
+                                document.getElementById(id - 1).style.display = "block" //如果id是奇數那是二類的圖，所以要減一變成一類的圖
+                            }
                         setTorF('F')
                     }
 
                 }
             })
             .catch(error => window.alert(error))
-
-
-
-        return (
-            <>
-
-            </>
-        )
     }
 
     return (
-        <div>
+        <div className='testImg'>
             {img.map((inner, index) => {
-                if (inner.id == 64) return <img id={inner["id"]} src={inner.img_url} style={{ width: "200px" }} onClick={() => change(inner.id)}></img>
-                if (inner.id != 64) return <img id={inner["id"]} src={inner.img_url} style={{ width: "200px", display: 'none' }} onClick={() => change(inner.id)}></img>
+                if (inner.id == 64) return <img id={inner["id"]} src={inner.img_url} style={{ width: "350px" }} onClick={() => change(inner.id)}></img>
+                if (inner.id != 64) return <img id={inner["id"]} src={inner.img_url} style={{ width: "350px", display: 'none' }} onClick={() => change(inner.id)}></img>
             }
             )}
         </div>
