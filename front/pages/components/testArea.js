@@ -15,6 +15,7 @@ function TestArea() {
                 setImg(data)
             })
     }, [])
+
     useEffect(() => {
         function mousedown(event) {
             console.log("pageX: ", event.pageX,
@@ -27,6 +28,7 @@ function TestArea() {
         }
         window.addEventListener('mousedown', mousedown);
     }, [])
+    
     function change(id) {
         if (id <= 37 && id > 20) { setLevel('P') }
         if (id <= 19 && id > 2) { setLevel('D') }

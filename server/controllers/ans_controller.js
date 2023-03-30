@@ -28,10 +28,12 @@ const insertData = async (req, res) => {
     const y = req.body.y
     Ans.insertData(id,x,y)
 }
+
 const insertImgUrl = async (req, res) => {
     Ans.insertImgUrl()
     res.status(200).json({})
 }
+
 const getAllImg = async (req, res) => {
     const results = await Ans.getAllImg();
     if (!results) {
@@ -40,6 +42,7 @@ const getAllImg = async (req, res) => {
     }
     res.status(200).json(results);
 }
+
 module.exports = {
     checkUp,
     insertData,

@@ -12,6 +12,7 @@ function insertData(){
                 setImg(data)
             })
     }, [])
+
     useEffect (()=>{
             function mousedown(event) {
                 setX(event.offsetX)
@@ -19,6 +20,7 @@ function insertData(){
         }
         window.addEventListener('mousedown', mousedown);
     },[])
+
     function change(id) {
         console.log(id)
         console.log(x)
@@ -34,8 +36,6 @@ function insertData(){
         }),
         method: 'POST',
       })
-     
-
     }
   
 return (

@@ -16,29 +16,8 @@ export default function Home() {
   const [posY, setposY] = React.useState(0);
   const [tru, setTru] = React.useState(true);
 
-  const pos = async () => {
-  //   const data = {
-  //     pointX: 1,
-  //     pointY: 2
-  //   }
-  //   await fetch(`${hostname}/ans/checkup`, {
-  //     body: JSON.stringify(data),
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json',
-  //     }),
-  //     method: 'POST'
-  //   })
-  //     .then((json) => json.json())
-  //     .then((result) => {
-  //       console.log(result[0])
-  //     })
-  //     .catch(error => window.alert(error))
-  }
-
   return (
     <>
-      {/* <button className="test" onClick={pos} >hiiiii</button> */}
-      {/* <InsertData/> */}
       <TestArea />
     </>
     /* <Head>
