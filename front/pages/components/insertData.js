@@ -41,7 +41,7 @@ function insertData(){
 return (
     <div>
         {img.map((inner,index)=>
-        <img id={index} src={inner.img_url} style={{width:"200px"}} onClick={()=>change(inner.id)}></img>
+        <img id={index} src={inner.img_url} style={{width:"350px"}} onClick={()=>change(inner.id)}></img>
         )}
     </div>
 )
