@@ -10,8 +10,8 @@ const checkUp = async(req,res) => {
         // console.log("thisis checkoutRes")
         console.log(checkUpResult[0])
         // console.log(checkUpResult[0].correct_pointX)
-        if(checkUpResult[0].correct_pointX-20 <= data.xPos && data.xPos<= checkUpResult[0].correct_pointX+20 
-            && checkUpResult[0].correct_pointY-20 <= data.yPos && data.yPos <= checkUpResult[0].correct_pointY+20){
+        if(checkUpResult[0].correct_pointX-35 <= data.xPos && data.xPos<= checkUpResult[0].correct_pointX+35 
+            && checkUpResult[0].correct_pointY-35 <= data.yPos && data.yPos <= checkUpResult[0].correct_pointY+35){
             return res.send({result:"correct"})
         }
         return res.send({result:"wrong"});
