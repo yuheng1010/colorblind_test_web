@@ -1,6 +1,6 @@
 require('dotenv').config();
 const bcrypt = require('bcrypt');
-const pool = require('../../db.js');
+const pool = require('../../util/db.js');
 const salt = parseInt(process.env.BCRYPT_SALT);
 const {TOKEN_EXPIRE, TOKEN_SECRET} = process.env;
 const jwt = require('jsonwebtoken');
@@ -8,9 +8,8 @@ const fs = require('fs');
 const testFolder = './public/';
 
 const checkAns = async (id) => {
-//    const ansQuery = 'SELECT * FROM testImg WHERE correct_pointX = ? AND correct_pointY = ?';
+
     const ansQuery = 'SELECT * FROM testImg WHERE id = ?';
-    // const ansBindings = [pointX, pointY];
     const ansBindings = id
     ans = await pool.query(ansQuery, ansBindings);
 
@@ -20,21 +19,13 @@ const checkAns = async (id) => {
         return {error: 'Wrong'};
     }
 
-    // try {
-    //     ans = await pool.query(ansQuery, ansBindings);
-    //     return ans;
-    // } catch (error) {
-    //     await conn.query('ROLLBACK');
-    //     return false;
-    // } finally {
-    //     conn.release();
-    // }
+}
 
-};
 const getAllImg = async () => {
     const [result] = await pool.query('SELECT * FROM testImg');
     return result;
 }
+
 const insertImgUrl = async() => {
     fs.readdir(testFolder, async (err, files) => {
         files.forEach(async file => {
@@ -46,12 +37,12 @@ const insertImgUrl = async() => {
         });
       });
 }
+
 const insertData = async(id,x,y) => {
    console.log(id,x,y)
    await pool.query(`UPDATE testImg SET correct_pointX= ?, correct_pointY= ? WHERE id=?`,[x,y,id])
    
 }
-
 
 module.exports = {
     insertData,

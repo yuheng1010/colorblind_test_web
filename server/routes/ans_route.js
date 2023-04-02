@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const {
-    wrapAsync,
+    wrapAsync
 } = require('../../util/util');
 
 const {

@@ -15,6 +15,7 @@ function TestArea() {
                 setImg(data)
             })
     }, [])
+
     useEffect(() => {
         function mousedown(event) {
             console.log("pageX: ", event.pageX,
@@ -27,6 +28,44 @@ function TestArea() {
         }
         window.addEventListener('mousedown', mousedown);
     }, [])
+
+    function genresult() {
+        var RGresult = localStorage.getItem("RGresult")
+        var Presult = localStorage.getItem("Presult")
+        var Dresult = localStorage.getItem("Dresult")
+        var RG = RGresult.substring(2,RGresult.indexOf("_",0))
+        var P = Presult.substring(1,Presult.indexOf("_",0))
+        var D = Dresult.substring(1,Dresult.indexOf("_",0))
+        var deg = ""
+        var type = ""
+
+        if(RG==40 || RG==60){
+            //normal
+            deg = "A"
+        }else if(RG>=220 && RG<=300){
+            //severe
+            deg = "1"
+        }else if(RG>=120 && RG<=200){
+            //moderate
+            deg = "2"
+        }else if(RG>=80 && RG<=100){
+            //mild
+            deg = "3"
+        }
+
+        if(RG!=40 && RG!=60 && P > D){
+            //protan
+            type = "B"
+        }else if (RG!=40 && RG!=60 && D >= P){
+            //deutan
+            type = "C"
+        }
+
+        location.assign("http://localhost:3000/qrcord/"+type+deg)
+
+    }
+
+    
     function change(id) {
         
         if (id <= 37 && id > 20) { setLevel('P') }
@@ -56,6 +95,7 @@ function TestArea() {
                     }else if(id==2 || id==3){
                         localStorage.setItem('Dresult',img[id-2]["level_name"]) 
                         alert("The colorblind test is finished ! Thank you !")
+                        genresult();
                     }
                 } else {
                     if (TorF == "F") { //這個等級已經錯過一次，現在再錯一次。所以這個level gameover了，跳下個level
@@ -73,6 +113,7 @@ function TestArea() {
                         if(level == "D"){
                             alert("The colorblind test is finished ! Thank you !")
                             localStorage.setItem('Dresult',img[id-2]["level_name"]) 
+                            genresult();
                         }
 
                     } else {
