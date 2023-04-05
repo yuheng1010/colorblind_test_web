@@ -86,7 +86,9 @@ function TestArea() {
                 document.getElementById(id).style.display = "none"
                 console.log(result.result)
                 if (result.result == "correct") {
-                    document.getElementById(id - 2).style.display = "block" //同樣等級的圖會連兩張，所以要減二才會到下個等級
+                    if(id!=2 || id!=3){
+                        document.getElementById(id - 2).style.display = "block" //同樣等級的圖會連兩張，所以要減二才會到下個等級
+                    }
                     setTorF('T')
                     if(id==38 || id==39){
                         localStorage.setItem('RGresult',img[id-2]["level_name"]) //id-2是它的位置
