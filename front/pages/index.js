@@ -1,11 +1,11 @@
 import React, { useDebugValue, useEffect, useContext, useState, useSyncExternalStore } from 'react';
-// import { BrowserRouter, Switch, Route, Routes, Link, NavLink, Redirect } from "react-router-dom";
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import TestArea from './components/testArea';
+import HomePage from './components/homePage';
 import InsertData from './components/insertData';
 // import Button from 'next/Button'
 
@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <TestArea />
+      <HomePage/>
     </>
     /* <Head>
       <title>Create Next App</title>
