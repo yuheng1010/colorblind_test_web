@@ -14,7 +14,7 @@ function HomePage() {
                         <div className='word' style={{fontWeight: '500', fontSize: '16px', marginTop: '3px'}}>If you didn't see one, just click</div>
                         <div className='word' style={{fontWeight: '500', fontSize: '16px', marginTop: '3px'}}>”i cannot see the gap” button below.</div>
                         <img src={'http://localhost:7000/instruction.jpg'} style={{marginTop: '30px', marginBottom: '30px', width: '38%'}}></img>
-                        <button className='startbtn' onClick={() => {location.assign("http://localhost:3000/components/testArea")}}>Got it!</button>
+                        <button className='startbtn' onClick={() => {location.assign("http://localhost:3000/components/testArea2")}}>Got it!</button>
                     </div>
                 </div>
         </div>

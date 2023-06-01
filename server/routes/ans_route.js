@@ -9,6 +9,8 @@ const {
     insertData,
     insertImgUrl,
     getAllImg,
+    getRGImg,
+    getBYImg
 } = require('../controllers/ans_controller');
 
 router.route("/ans/checkup")
@@ -22,6 +24,14 @@ router.route('/insertImgUrl')
 
 router.route('/getAllImg')
     .get(getAllImg)
+
+router.route('/getBYImg')
+    .get(getBYImg)
+
+router.route('/getRGImg')
+    .get(getRGImg)
+
+
 
 
 
