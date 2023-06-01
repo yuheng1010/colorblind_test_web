@@ -60,3 +60,23 @@
     line-height: 24px;
     margin-bottom: 20px;
 }
+.colortest{
+    width: 229px;
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.colortestbtn{
+    width: 110px;
+    height: 39px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+}
