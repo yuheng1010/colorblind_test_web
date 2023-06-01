@@ -75,19 +75,17 @@ function TestArea2() {
                 document.getElementById("btn" + id).style.display = "none"
                 console.log(result.result)
                 if (result.result == "correct") {
-
+                    if(id != 75){
                         document.getElementById(id + 1).style.display = "block" 
                         document.getElementById("btn" + (id + 1)).style.display = "block"
- 
+                    }
                     if (id == 75) {
-
                         localStorage.setItem('BYresult', img[id -66 -1]["level_name"])
                         alert("The colorblind test is finished ! Thank you !")
                         genresult();
                     }
                 } else {
                     if (TorF == "F") { //這個等級已經錯過一次，現在再錯一次。所以這個level gameover了，跳下個level
-
                         alert("The colorblind test is finished ! Thank you !")
                         localStorage.setItem('BYresult', img[id - 66 ]["level_name"])
                         genresult();
