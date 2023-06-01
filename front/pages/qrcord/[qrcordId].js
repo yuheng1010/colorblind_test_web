@@ -16,8 +16,8 @@ function QRCORD() {
             type = "protanomalous"
         } else if (qrcodeId[0] == "C") {
             type = "deuteranomalous"
-        } else if (qrcodeId[0 == 'D']) {
-            type = "tritanomaly"
+        } else if (qrcodeId[0] == 'D') {
+            type = "tritanomalous"
         } else if (qrcodeId[0] == 'A') {
             type = "normal"
             level = "normal"

@@ -23,7 +23,7 @@ function HomePage() {
                         {status ==1 && 
                             <div className='colortest'>
                                 <button className='colortestbtn' onClick={() => {location.assign("/components/testArea")}}><FontAwesomeIcon icon={faArrowLeft} style={{marginTop: '6px'}}/>  Red-green</button>
-                                <button className='colortestbtn' onClick={() => {location.assign("/components/testArea")}}>Tritan(blue)  <FontAwesomeIcon icon={faArrowRight} style={{marginTop: '6px'}}/></button>
+                                <button className='colortestbtn' onClick={() => {location.assign("/components/testArea2")}}>Tritan(blue)  <FontAwesomeIcon icon={faArrowRight} style={{marginTop: '6px'}}/></button>
                             </div>
                         }
                     </div>

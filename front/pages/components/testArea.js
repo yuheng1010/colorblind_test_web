@@ -8,7 +8,7 @@ function TestArea() {
     const [level, setLevel] = useState('RG')
 
     useEffect(() => {
-        fetch("http://localhost:7000/api/v1/getAllImg")
+        fetch("http://localhost:7000/api/v1/getRGImg")
             .then(res => res.json())
             .then(data => {
                 console.log(data)

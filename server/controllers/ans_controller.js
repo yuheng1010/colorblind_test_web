@@ -43,9 +43,29 @@ const getAllImg = async (req, res) => {
     res.status(200).json(results);
 }
 
+const getRGImg = async (req, res) => {
+    const results = await Ans.getRGImg();
+    if (!results) {
+        res.status(400).send({ error: 'Wrong' });
+        return;
+    }
+    res.status(200).json(results);
+}
+
+const getBYImg = async (req, res) => {
+    const results = await Ans.getBYImg();
+    if (!results) {
+        res.status(400).send({ error: 'Wrong' });
+        return;
+    }
+    res.status(200).json(results);
+}
+
 module.exports = {
     checkUp,
     insertData,
     insertImgUrl,
     getAllImg,
+    getBYImg,
+    getRGImg
 };
