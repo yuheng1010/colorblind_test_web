@@ -61,7 +61,7 @@ function TestArea() {
             type = "C"
         }
 
-        location.assign("http://localhost:3000/qrcord/" + type + deg)
+        location.assign("/qrcord/" + type + deg)
 
     }
 

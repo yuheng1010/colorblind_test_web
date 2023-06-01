@@ -29,41 +29,31 @@ function TestArea2() {
         window.addEventListener('mousedown', mousedown);
     }, [])
 
-    // function genresult() {
-    //     var RGresult = localStorage.getItem("RGresult")
-    //     var Presult = localStorage.getItem("Presult")
-    //     var Dresult = localStorage.getItem("Dresult")
-    //     var RG = RGresult.substring(2, RGresult.indexOf("_", 0))
-    //     var P = Presult.substring(1, Presult.indexOf("_", 0))
-    //     var D = Dresult.substring(1, Dresult.indexOf("_", 0))
-    //     var deg = ""
-    //     var type = ""
+    function genresult() {
+        var BYresult = localStorage.getItem("BYresult")
+        var BY = BYresult.substring(1)
+        var deg = ""
+        var type = ""
+        if (BY == 10) {
+            //normal
+            deg = "A"
+        } else if (BY >= 1 && BY <= 3) {
+            //severe
+            type = "D"
+            deg = "1"
+        } else if (BY >= 4 && BY <= 6) {
+            //moderate
+            type = "D"
+            deg = "2"
+        } else if (BY >= 7 && BY <= 9) {
+            //mild
+            type = "D"
+            deg = "3"
+        }
 
-    //     if (RG == 40 || RG == 60) {
-    //         //normal
-    //         deg = "A"
-    //     } else if (RG >= 220 && RG <= 300) {
-    //         //severe
-    //         deg = "1"
-    //     } else if (RG >= 120 && RG <= 200) {
-    //         //moderate
-    //         deg = "2"
-    //     } else if (RG >= 80 && RG <= 100) {
-    //         //mild
-    //         deg = "3"
-    //     }
+        location.assign("/qrcord/" + type + deg)
 
-    //     if (RG != 40 && RG != 60 && P > D) {
-    //         //protan
-    //         type = "B"
-    //     } else if (RG != 40 && RG != 60 && D >= P) {
-    //         //deutan
-    //         type = "C"
-    //     }
-
-    //     location.assign("http://localhost:3000/qrcord/" + type + deg)
-
-    // }
+    }
 
 
     function change(id) {
@@ -92,18 +82,19 @@ function TestArea2() {
                     if (id == 75) {
                         localStorage.setItem('BYresult', img[id -66 -1]["level_name"])
                         alert("The colorblind test is finished ! Thank you !")
-                        // genresult();
+                        genresult();
                     }
                 } else {
                     if (TorF == "F") { //這個等級已經錯過一次，現在再錯一次。所以這個level gameover了，跳下個level
                         alert("The colorblind test is finished ! Thank you !")
                         localStorage.setItem('BYresult', img[id - 66 ]["level_name"])
-                        // genresult();
+                        genresult();
                     
                     } else {
                         if (id == 66){
                             alert("The colorblind test is finished ! Thank you !")
                             localStorage.setItem('BYresult', img[0]["level_name"])
+                            genresult();
                         }else{
                             document.getElementById(id).style.display = "none"
                             document.getElementById("btn" + id).style.display = "none"

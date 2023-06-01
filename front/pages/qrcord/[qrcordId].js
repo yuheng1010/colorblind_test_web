@@ -16,7 +16,13 @@ function QRCORD() {
             type = "protanomalous"
         } else if (qrcodeId[0] == "C") {
             type = "deuteranomalous"
+        } else if (qrcodeId[0] == 'D') {
+            type = "tritanomalous"
+        } else if (qrcodeId[0] == 'A') {
+            type = "normal"
+            level = "normal"
         }
+
         if (qrcodeId[1] == 1) {
             level = "severe"
         } else if (qrcodeId[1] == 2) {
@@ -59,9 +65,9 @@ function QRCORD() {
             <div className='ins'>Now scan this QRcode on the Hololens.</div>
             <br />
             <button className='dLBtn' onClick={Download}>Download QRcode</button>
+            <button className='dLBtn' onClick={() => {location.assign("/")}} style={{backgroundColor:'#000000', color:'#ffffff'}}>Try the other test!</button>
         </div>
     )
-
 
 }
 
